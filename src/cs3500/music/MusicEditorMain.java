@@ -67,14 +67,14 @@ public class MusicEditorMain {
       */
       // TODO Uncomment for test of complex repeats
 
-      SimpleRepeat simpleRepeat1 = new SimpleRepeat(16, 1);
-      SimpleRepeat simpleRepeat2 = new SimpleRepeat(32, 1);
+      SimpleRepeat simpleRepeat1 = new SimpleRepeat(15, 0);
+      SimpleRepeat simpleRepeat2 = new SimpleRepeat(31, 0);
       ArrayList<SimpleRepeat> simples = new ArrayList<>();
       ArrayList<Integer> endings = new ArrayList<>();
       simples.add(simpleRepeat1);
-      endings.add(8);
+      endings.add(7);
       simples.add(simpleRepeat2);
-      endings.add(24);
+      endings.add(23);
       Repeat complexRepeat = new ComplexRepeat(simples, endings);
       editor.setRepeat(complexRepeat);
 
