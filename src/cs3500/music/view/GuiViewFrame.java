@@ -243,5 +243,57 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {//imple
     this.displayPanel.addMouseListener(m);
   }
 
+  // TODO
+  @Override
+  public void addSimpleRepeat() {
+    String repeatStartBeat = JOptionPane.showInputDialog(null, "<html>Enter a simple repeat " +
+                    "start beat: ",
+            JOptionPane.QUESTION_MESSAGE);
+    String repeatDestinationBeat = JOptionPane.showInputDialog(null, "<html>Enter a simple " +
+                    "repeat destination beat: ",
+            JOptionPane.QUESTION_MESSAGE);
 
+    int clipRepeatStartBeat = 0;
+    int clipRepeatDestinationBeat = 0;
+
+
+    try {
+      clipRepeatStartBeat = Integer.parseInt(repeatStartBeat);
+      clipRepeatDestinationBeat = Integer.parseInt(repeatDestinationBeat);
+
+    } catch (NumberFormatException e) {
+      System.out.println("Invalid input");
+
+    }
+
+    this.displayPanel.addSimpleRepeat(clipRepeatStartBeat, clipRepeatDestinationBeat);
+    update();
+  }
+
+  // TODO
+  @Override
+  public void addComplexRepeat() {
+  /*String repeatStartBeat = JOptionPane.showInputDialog(null, "<html>Enter a simple repeat " +
+                  "start beat: ",
+          JOptionPane.QUESTION_MESSAGE);
+  String repeatDestinationBeat = JOptionPane.showInputDialog(null, "<html>Enter a simple " +
+                  "repeat destination beat: ",
+          JOptionPane.QUESTION_MESSAGE);
+
+  int clipRepeatStartBeat = 0;
+  int clipRepeatDestinationBeat = 0;
+
+
+  try {
+    clipRepeatStartBeat = Integer.parseInt(repeatStartBeat);
+    clipRepeatDestinationBeat = Integer.parseInt(repeatDestinationBeat);
+
+  } catch (NumberFormatException e) {
+    System.out.println("Invalid input");
+
+  }
+
+  this.displayPanel.addSimpleRepeat(clipRepeatStartBeat, clipRepeatDestinationBeat);
+  update();*/
+  }
 }

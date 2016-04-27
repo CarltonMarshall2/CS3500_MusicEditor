@@ -44,6 +44,11 @@ public class Controller implements KeyListener {
     keyPresses.put(KeyEvent.VK_D, () -> this.view.removeExistingNote());
     keyPresses.put(KeyEvent.VK_HOME, () -> this.view.goToStart());
     keyPresses.put(KeyEvent.VK_END, () -> this.view.goToEnd());
+    // TODO
+    // adds simple repeat
+    keyPresses.put(KeyEvent.VK_R, () -> this.view.addSimpleRepeat());
+    // adds complex repeat
+    keyPresses.put(KeyEvent.VK_T, () -> this.view.addComplexRepeat());
 
     this.view.addKeyListener(this);
 

@@ -164,7 +164,7 @@ public class MusicEditor implements IMusicEditor {
 
     } else { // otherwise, increment the current beat
 
-      currentClip.setCurrentBeat(currentBeat++);
+      currentClip.setCurrentBeat(currentBeat += 1);
     }
 
   }
@@ -175,6 +175,7 @@ public class MusicEditor implements IMusicEditor {
    *
    * @param newRepeat the repeat to be added
    */
+  @Override
   public void setRepeat(Repeat newRepeat) {
 
     Objects.requireNonNull(newRepeat);
@@ -225,6 +226,12 @@ public class MusicEditor implements IMusicEditor {
 
     return clips.get(activeClip).getAllSortedTones().size();
 
+  }
+
+  // TODO
+  @Override
+  public Repeat getRepeat() {
+    return repeat;
   }
 
 }

@@ -1,5 +1,7 @@
 package cs3500.music.model;
 
+import java.util.ArrayList;
+
 /**
  * Class to represent a Simple repeat
  */
@@ -77,6 +79,18 @@ public class SimpleRepeat implements Repeat {
     System.out.println("NEW BEAT: " + returnBeat);
     return returnBeat;
 
+  }
+
+  @Override
+  public ArrayList<ArrayList<Integer>> getRepeatTimings() {
+    ArrayList<ArrayList<Integer>> repeatTimings = new ArrayList<>();
+    ArrayList<Integer> currentRepeatTiming = new ArrayList<>();
+    currentRepeatTiming.add(startBeat);
+    currentRepeatTiming.add(destinationBeat);
+    currentRepeatTiming.add(-1);
+    repeatTimings.add(currentRepeatTiming);
+
+    return repeatTimings;
   }
 
 }

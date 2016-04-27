@@ -117,6 +117,18 @@ public class ComplexRepeat implements Repeat {
 
   }
 
+  @Override
+  public ArrayList<ArrayList<Integer>> getRepeatTimings() {
+    ArrayList<ArrayList<Integer>> repeatTimings = new ArrayList<>();
+
+    for (SimpleRepeat s : repeats) {
+
+      repeatTimings.add(s.getRepeatTimings().get(0));
+
+    }
+    return repeatTimings;
+  }
+
   // returns true if the given beat is the beginning of a previously played ending
   private boolean beatIsAtPlayedEndingBeginning(int currentBeat) {
 

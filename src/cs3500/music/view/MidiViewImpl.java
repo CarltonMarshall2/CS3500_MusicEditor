@@ -184,6 +184,16 @@ public class MidiViewImpl implements GuiView {
   }
 
   @Override
+  public void addSimpleRepeat() {
+
+  }
+
+  @Override
+  public void addComplexRepeat() {
+
+  }
+
+  @Override
   public void play() {
 
     if (this.playState == PlayState.PLAY) {

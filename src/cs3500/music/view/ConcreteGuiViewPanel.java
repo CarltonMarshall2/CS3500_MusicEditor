@@ -13,6 +13,7 @@ import javax.swing.*;
 import cs3500.music.model.ChromaticTone;
 import cs3500.music.model.IMusicEditor;
 import cs3500.music.model.Note;
+import cs3500.music.model.SimpleRepeat;
 
 /**
  * A GUI view panel that draws a representation of the Music Editor on the screen
@@ -50,6 +51,7 @@ public class ConcreteGuiViewPanel extends JPanel {
     this.currentBeat = model.getCurrentBeat();
     //this.currentBeat = 50;
     this.maxWidth = (int) ((width - X_MARGIN) / 16.8);
+
 
     this.setPreferredSize(new Dimension(this.model.getRangeOfClip() * 4 * WIDTH, this.getHeight()));
 
@@ -140,9 +142,36 @@ public class ConcreteGuiViewPanel extends JPanel {
             (currentBeat * WIDTH / 4) + X_MARGIN,
             20 + tones.size() * HEIGHT);
 
+    this.drawSimpleRepeat(g);
+    this.drawComplexRepeat(g);
+
   }
 
+  void drawSimpleRepeat(Graphics g) {
+    Graphics2D g6 = (Graphics2D) g;
+    g6.setStroke(new BasicStroke(3));
+    g6.setPaint(Color.blue);
+    // TODO add the line at the clipRepeatStartBeat
+/*    g6.drawLine((model.getRepeat().getStartBeat()) * WIDTH / 4) + X_MARGIN,
+            Y_MARGIN,
+            (currentBeat * WIDTH / 4) + X_MARGIN,
+            20 + tones.size() * HEIGHT)*/
+  }
 
+  // TODO
+  void drawComplexRepeat(Graphics g) {
+
+  }
+
+  // TODO
+  public void addSimpleRepeat(int clipRepeatStartBeat, int clipRepeatDestinationBeat) {
+    this.model.setRepeat(new SimpleRepeat(clipRepeatStartBeat, clipRepeatDestinationBeat));
+  }
+
+  // TODO
+  public void addComplexRepeat() {
+    //this.model.setRepeat(new ComplexRepeat());
+  }
 
 
 /*  public void deleteNoteAtBeat(int noteTone, int noteStartBeat, int noteDuration,

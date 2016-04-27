@@ -17,4 +17,6 @@ public interface GuiView extends View {
   boolean clipIsOver();
   void addKeyListener(KeyListener listener);
   void addActionListener(ActionListener listener);
+  void addSimpleRepeat();
+  void addComplexRepeat();
 }

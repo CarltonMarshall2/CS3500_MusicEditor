@@ -89,4 +89,16 @@ public class CompositeView implements GuiView {
 
   }
 
+  @Override
+  public void addSimpleRepeat() {
+    this.guiView.addSimpleRepeat();
+    this.midiView.addSimpleRepeat();
+  }
+
+  @Override
+  public void addComplexRepeat() {
+    this.guiView.addComplexRepeat();
+    this.midiView.addComplexRepeat();
+  }
+
 }

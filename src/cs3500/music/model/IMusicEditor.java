@@ -93,4 +93,7 @@ public interface IMusicEditor {
    * @return an ArrayList<Note></Note> of all the notes in the active clip
    */
   ArrayList<Note> getAllNotes();
+
+  void setRepeat(Repeat newRepeat);
+  Repeat getRepeat();
 }
