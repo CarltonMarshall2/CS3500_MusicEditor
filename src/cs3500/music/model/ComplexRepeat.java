@@ -121,9 +121,19 @@ public class ComplexRepeat implements Repeat {
   public ArrayList<ArrayList<Integer>> getRepeatTimings() {
     ArrayList<ArrayList<Integer>> repeatTimings = new ArrayList<>();
 
-    for (SimpleRepeat s : repeats) {
+    for (int i = 0; i < repeats.size(); i++) {
 
-      repeatTimings.add(s.getRepeatTimings().get(0));
+      ArrayList<Integer> currentTimings = new ArrayList<>();
+      SimpleRepeat currentRepeat = repeats.get(i);
+      Integer currentRepeatStart = currentRepeat.getStartBeat();
+      Integer currentRepeatDest = currentRepeat.getDestinationBeat();
+      Integer currentEndingStart = endings.get(i).get(0);
+
+      currentTimings.add(currentRepeatStart);
+      currentTimings.add(currentRepeatDest);
+      currentTimings.add(currentEndingStart);
+
+      repeatTimings.add(currentTimings);
 
     }
     return repeatTimings;

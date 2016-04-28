@@ -6,9 +6,7 @@ import cs3500.music.model.MusicEditor;
 import cs3500.music.util.MidiBuilder;
 import cs3500.music.util.MusicReader;
 import cs3500.music.view.CompositeView;
-import cs3500.music.view.ConcreteGuiViewPanel;
 import cs3500.music.view.GuiView;
-import cs3500.music.view.MidiViewImpl;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;

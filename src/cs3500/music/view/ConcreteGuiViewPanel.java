@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.swing.*;
 
 import cs3500.music.model.ChromaticTone;
+import cs3500.music.model.ComplexRepeat;
 import cs3500.music.model.IMusicEditor;
 import cs3500.music.model.Note;
 import cs3500.music.model.SimpleRepeat;
@@ -53,7 +54,8 @@ public class ConcreteGuiViewPanel extends JPanel {
     this.maxWidth = (int) ((width - X_MARGIN) / 16.8);
 
 
-    this.setPreferredSize(new Dimension(this.model.getRangeOfClip() * 4 * WIDTH, this.getHeight()));
+    this.setPreferredSize(new Dimension(this.model.getRangeOfClip() * 4 * WIDTH, this.getHeight
+            ()));
 
 
     int counter = tones.size() - 1;
@@ -70,6 +72,7 @@ public class ConcreteGuiViewPanel extends JPanel {
    */
   @Override
   public void paintComponent(Graphics g) {
+
     // Handle the default painting
     super.paintComponent(g);
 
@@ -102,7 +105,8 @@ public class ConcreteGuiViewPanel extends JPanel {
                   WIDTH / 4,
                   HEIGHT);
         }
-      } else {
+      }
+      else {
         for (int w = 1; w < n.getDuration(); w++) {
           g2.setPaint(Color.GREEN);
           g2.fillRect(((WIDTH / 4) * n.getStartTime()) + (w * (WIDTH / 4)) + X_MARGIN,
@@ -113,7 +117,7 @@ public class ConcreteGuiViewPanel extends JPanel {
       }
     }
 
-        // paints the length
+    // paints the length
     Graphics2D g3 = (Graphics2D) g;
     g3.setPaint(Color.black);
 
@@ -142,35 +146,93 @@ public class ConcreteGuiViewPanel extends JPanel {
             (currentBeat * WIDTH / 4) + X_MARGIN,
             20 + tones.size() * HEIGHT);
 
-    this.drawSimpleRepeat(g);
-    this.drawComplexRepeat(g);
+    if (model.getRepeat() == null) {
 
+
+    }
+    else if (model.getRepeat().getType().equals("Simple")) {
+      this.drawSimpleRepeat(g);
+    }
+    else if (model.getRepeat().getType().equals("Complex")) {
+      this.drawComplexRepeat(g);
+    }
   }
 
   void drawSimpleRepeat(Graphics g) {
+
+    // draw where the 'open' repeat starts ||:
     Graphics2D g6 = (Graphics2D) g;
-    g6.setStroke(new BasicStroke(3));
+    g6.setStroke(new BasicStroke(4));
     g6.setPaint(Color.blue);
-    // TODO add the line at the clipRepeatStartBeat
-/*    g6.drawLine((model.getRepeat().getStartBeat()) * WIDTH / 4) + X_MARGIN,
+    g6.drawLine(((model.getRepeat().getRepeatTimings().get(0).get(1)) * WIDTH / 4) + X_MARGIN,
             Y_MARGIN,
-            (currentBeat * WIDTH / 4) + X_MARGIN,
-            20 + tones.size() * HEIGHT)*/
+            ((model.getRepeat().getRepeatTimings().get(0).get(1)) * WIDTH / 4) + X_MARGIN,
+            ((20 + tones.size()) * HEIGHT));
+
+    // draw line where the 'closed' repeat starts :||
+    Graphics2D g7 = (Graphics2D) g;
+    g7.setStroke(new BasicStroke(4));
+    g7.setPaint(Color.cyan);
+    g7.drawLine(((model.getRepeat().getRepeatTimings().get(0).get(0)) * WIDTH / 4) + X_MARGIN,
+            Y_MARGIN,
+            ((model.getRepeat().getRepeatTimings().get(0).get(0)) * WIDTH / 4) + X_MARGIN,
+            ((20 + tones.size()) * HEIGHT));
+
+    //System.out.println(model.getRepeat().getRepeatTimings().get(0).get(0));
+
   }
 
   // TODO
   void drawComplexRepeat(Graphics g) {
+    Graphics2D g8 = (Graphics2D) g;
+    g8.setStroke(new BasicStroke(4));
+    g8.setPaint(Color.blue);
+    for (int i = 0; i < model.getRepeat().getRepeatTimings().size(); i++) {
+      g8.drawLine(((model.getRepeat().getRepeatTimings().get(i).get(1)) * WIDTH / 4) + X_MARGIN,
+              Y_MARGIN,
+              ((model.getRepeat().getRepeatTimings().get(i).get(1)) * WIDTH / 4) + X_MARGIN,
+              ((20 + tones.size()) * HEIGHT));
+    }
 
+
+    Graphics2D g9 = (Graphics2D) g;
+    g9.setStroke(new BasicStroke(4));
+    g9.setPaint(Color.cyan);
+    for (int i = 0; i < model.getRepeat().getRepeatTimings().size(); i++) {
+      g9.drawLine(((model.getRepeat().getRepeatTimings().get(i).get(0)) * WIDTH / 4) + X_MARGIN,
+              Y_MARGIN,
+              ((model.getRepeat().getRepeatTimings().get(i).get(0)) * WIDTH / 4) + X_MARGIN,
+              ((20 + tones.size()) * HEIGHT));
+    }
+
+    Graphics2D g10 = (Graphics2D) g;
+    g10.setStroke(new BasicStroke(4));
+    g10.setPaint(Color.yellow);
+    for (int i = 0; i < model.getRepeat().getRepeatTimings().size(); i++) {
+      g10.drawLine(((model.getRepeat().getRepeatTimings().get(i).get(2)) * WIDTH / 4) + X_MARGIN,
+              Y_MARGIN,
+              ((model.getRepeat().getRepeatTimings().get(i).get(2)) * WIDTH / 4) + X_MARGIN,
+              ((20 + tones.size()) * HEIGHT));
+    }
+
+    System.out.println("start beat");
+    System.out.println(model.getRepeat().getRepeatTimings().get(0).get(0));
+    System.out.println("destination beat");
+    System.out.println(model.getRepeat().getRepeatTimings().get(0).get(1));
+    System.out.println("endings?");
+    System.out.println(model.getRepeat().getRepeatTimings().get(0).get(2));
+    System.out.println("real endings?");
+    System.out.println(model.getRepeat().getRepeatTimings());
   }
 
-  // TODO
   public void addSimpleRepeat(int clipRepeatStartBeat, int clipRepeatDestinationBeat) {
     this.model.setRepeat(new SimpleRepeat(clipRepeatStartBeat, clipRepeatDestinationBeat));
   }
 
   // TODO
-  public void addComplexRepeat() {
-    //this.model.setRepeat(new ComplexRepeat());
+  public void addComplexRepeat(ArrayList<SimpleRepeat> repeats,
+                               ArrayList<Integer> beginningBeatsOfEndings) {
+    this.model.setRepeat(new ComplexRepeat(repeats, beginningBeatsOfEndings));
   }
 
 

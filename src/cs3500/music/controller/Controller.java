@@ -50,6 +50,12 @@ public class Controller implements KeyListener {
     // adds complex repeat
     keyPresses.put(KeyEvent.VK_T, () -> this.view.addComplexRepeat());
 
+    // TODO
+    // adds simple repeat
+    keyPresses.put(KeyEvent.VK_R, () -> this.view.addSimpleRepeat());
+    // adds complex repeat
+    keyPresses.put(KeyEvent.VK_T, () -> this.view.addComplexRepeat());
+
     this.view.addKeyListener(this);
 
   }

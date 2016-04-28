@@ -66,18 +66,19 @@ public class MusicEditorMain {
       editor.setRepeat(simpleRepeat);
       */
       // TODO Uncomment for test of complex repeats
-      /*
-      SimpleRepeat simpleRepeat1 = new SimpleRepeat(15, 0);
-      SimpleRepeat simpleRepeat2 = new SimpleRepeat(31, 0);
+      //
+      SimpleRepeat simpleRepeat1 = new SimpleRepeat(24, 0);
+      SimpleRepeat simpleRepeat2 = new SimpleRepeat(48, 0);
       ArrayList<SimpleRepeat> simples = new ArrayList<>();
       ArrayList<Integer> endings = new ArrayList<>();
       simples.add(simpleRepeat1);
-      endings.add(7);
+      endings.add(16);
       simples.add(simpleRepeat2);
-      endings.add(23);
+      endings.add(40);
       Repeat complexRepeat = new ComplexRepeat(simples, endings);
       editor.setRepeat(complexRepeat);
-      */
+      //*/
+
 
 
       // implement the view

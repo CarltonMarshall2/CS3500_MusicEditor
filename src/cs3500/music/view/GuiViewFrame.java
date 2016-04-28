@@ -1,11 +1,16 @@
 package cs3500.music.view;
 
 import cs3500.music.model.IMusicEditor;
+import cs3500.music.model.SimpleRepeat;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.swing.*;
 
@@ -273,27 +278,24 @@ public class GuiViewFrame extends javax.swing.JFrame implements GuiView {//imple
   // TODO
   @Override
   public void addComplexRepeat() {
-  /*String repeatStartBeat = JOptionPane.showInputDialog(null, "<html>Enter a simple repeat " +
-                  "start beat: ",
-          JOptionPane.QUESTION_MESSAGE);
-  String repeatDestinationBeat = JOptionPane.showInputDialog(null, "<html>Enter a simple " +
-                  "repeat destination beat: ",
-          JOptionPane.QUESTION_MESSAGE);
+    String howManyRepeats = JOptionPane.showInputDialog(null, "<html>How many repeats would you " +
+            "like to add? ", JOptionPane.QUESTION_MESSAGE);
 
-  int clipRepeatStartBeat = 0;
-  int clipRepeatDestinationBeat = 0;
+    ArrayList<SimpleRepeat> simpleRepeats = new ArrayList<>();
+    ArrayList<Integer> endingStarts = new ArrayList<>();
 
+    for (int i = 0; i < Integer.parseInt(howManyRepeats); i++) {
+      simpleRepeats.add(i, new SimpleRepeat
+              (Integer.parseInt(JOptionPane.showInputDialog(null, "<html>Enter " + "a complex repeat start beat: ", JOptionPane.QUESTION_MESSAGE)),
+              Integer.parseInt(JOptionPane.showInputDialog(null, "<html>Enter " + "a complex " + "repeat destination beat: ", JOptionPane.QUESTION_MESSAGE))));
+    }
 
-  try {
-    clipRepeatStartBeat = Integer.parseInt(repeatStartBeat);
-    clipRepeatDestinationBeat = Integer.parseInt(repeatDestinationBeat);
+    for (int i = 0; i < Integer.parseInt(howManyRepeats); i++) {
+      endingStarts.add(i, Integer.parseInt(JOptionPane.showInputDialog(null, "<html>Enter the " +
+              "ending start beat for the repeat number " + i, JOptionPane.QUESTION_MESSAGE)));
+    }
 
-  } catch (NumberFormatException e) {
-    System.out.println("Invalid input");
-
-  }
-
-  this.displayPanel.addSimpleRepeat(clipRepeatStartBeat, clipRepeatDestinationBeat);
-  update();*/
+    this.displayPanel.addComplexRepeat(simpleRepeats, endingStarts);
+    update();
   }
 }
